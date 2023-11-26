@@ -11,10 +11,6 @@ option solver highs;
 solve;
 
 # Display results - you can customize this section based on what results you want to see
-display A;
-display B;
-display C;
-display Y;
 
 
 display Cout_Total;
@@ -22,4 +18,23 @@ display Cout_Total;
 # You may want to add more display commands or post-processing commands here to analyze your results more thoroughly
 printf {j in JOURS, f in FORETS, e in ESSENCES, s in SCIERIES} "%s\t%s\t%s\t%s\t%.3f\n", j, f, e, s, A[f, s, e, j] > "./resultats_A.csv";
 
+display {f in FORETS, e in ESSENCES} sum {s in SCIERIES, j in JOURS} A[f, s, e, j];
 
+
+param SommeBois {FORETS, ESSENCES, JOURS};
+
+let {f in FORETS, e in ESSENCES, j in JOURS} SommeBois[f, e, j] := sum {s in SCIERIES} A[f, s, e, j];
+
+# Écriture de l'en-tête
+printf "Jour\tForet\tEssence\tSommeBois\n" > "./sommes_A.csv";
+
+# Ajout des données
+printf {f in FORETS, e in ESSENCES, j in JOURS} "%s\t%s\t%s\t%.3f\n", j, f, e, SommeBois[f, e, j] >> "./sommes_A.csv";
+
+display {s in SCIERIES, j in JOURS} sum {r in RABOTAGES, e in ESSENCES} B[s, r, e, j];
+
+display {r in RABOTAGES, j in JOURS} sum {c in CLIENTS, e in ESSENCES, m in MODES_TRANSPORT} C[r, c, e, j, m];
+
+display {c in CLIENTS, j in JOURS} sum {m in MODES_TRANSPORT, e in ESSENCES, r in RABOTAGES} C[r, c, e, j, m];
+
+display entrer_secteur;

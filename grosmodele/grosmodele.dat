@@ -59,16 +59,16 @@ param Distance_rabotage_client : Goodfellow	Lowes	HH	Rona	Home_Depot :=
 #  Fir	    0	0;
 
 param Demande_basse : SPF	Fir :=
-    Goodfellow	150000	0
+    Goodfellow	50000	0
     Lowes	    120000	0
-    HH	        0	20000
-    Rona	    10000	0
+    HH	        0	90000
+    Rona	    100000	0
     Home_Depot	110000	0;
 
 param Demande_haute : SPF	Fir :=
-    Goodfellow	172500	0
-    Lowes	    287500	0
-    HH	        0	287500
+    Goodfellow	72500	0
+    Lowes	    187500	0
+    HH	        0	110500
     Rona	    172500	0
     Home_Depot	172500	0;
 

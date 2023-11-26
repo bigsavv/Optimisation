@@ -55,10 +55,6 @@ minimize Cout_Total:
 
 # Contraintes
 
-# Contrainte pour prioriser le client urgent
-
-
-
 # Contraintes de décision de récolte
 subject to DecisionRecolte {f in FORETS, j in JOURS, e in ESSENCES}: # Pas le droit de couper si on n'a pas choisi le secteur
     sum {s in SCIERIES} A[f, s, e, j] <= Cap_foret[f, e] * Y[f];
@@ -71,6 +67,9 @@ subject to EntreeSecteur {f in FORETS, j in JOURS, e in ESSENCES}: # On ne peut 
 
 subject to AlaFin {f in FORETS, e in ESSENCES}: # À la fin de la période, on doit avoir récolté le volume de bois complet du secteur
     sum {s in SCIERIES, j in JOURS} A[f, s, e, j] = Cap_foret[f, e] * Y[f];
+
+subject to LimiteEquipes {j in JOURS}: # Limite de 5 équipes par jour
+    sum {f in FORETS} entrer_secteur[f, j] <= 5;
 
 # Contraintes de capacité et de demande
 subject to ContrainteApprovisionnement {f in FORETS, e in ESSENCES, j in JOURS}:

@@ -1,8 +1,9 @@
 import pandas as pd
 import altair as alt
+import csv
 
 # Load the dataset
-df = pd.read_csv('resultats_A.csv')  # Replace with your file path
+df = pd.read_csv('grosmodele/resultats_A.csv')  # Replace with your file path
 
 # Remove the 'Scierie' column if it exists
 if 'Scierie' in df.columns:
