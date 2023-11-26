@@ -1,0 +1,83 @@
+# Fichier de données
+
+set FORETS := LacMartin LacDesCaches LacHolmes;
+set SCIERIES := Senneterre LebelsurQuevillon;
+set RABOTAGES := Senneterre_rabot La_Dore_rabot;
+set CLIENTS := Goodfellow Lowes;
+set ESSENCES := SPF Fir;
+set JOURS := j01 j02 j03 j04 j05 j06 j07 j08 j09 j10 j11 j12 j13 j14 j15 j16 j17 j18 j19 j20 j21 j22 j23 j24 j25 j26;
+set MODES_TRANSPORT := train route;
+
+# Paramètres
+param Distance_foret_scie : Senneterre	LebelsurQuevillon :=
+    LacMartin	    42.3	130
+    LacDesCaches	60	92.8
+    LacHolmes	    112	27.6;
+
+param Distance_scie_rabotage : Senneterre_rabot	La_Dore_rabot :=
+    Senneterre	0	    528
+    LebelsurQuevillon	    88.2	443;
+
+param Distance_rabotage_client : Goodfellow	Lowes :=
+    Senneterre_rabot	542	1132
+    La_Dore_rabot	    529	1376;
+
+# set URGENT_CLIENTS within CLIENTS := Goodfellow; # Liste des clients urgents
+
+#param Demande_basse_urgente : Goodfellow :=
+#   SPF	100000	0
+#  Fir	    0	0;
+
+param Demande_basse : SPF	Fir :=
+    Goodfellow	150000	0
+    Lowes	    0	250000;
+
+param Demande_haute : SPF	Fir :=
+    Goodfellow	172500	0
+    Lowes	    0	287500;
+
+param Droit_de_coupe : j01 j02 j03 j04 j05 j06 j07 j08 j09 j10 j11 j12 j13 j14 j15 j16 j17 j18 j19 j20 j21 j22 j23 j24 j25 j26 :=
+LacMartin	    0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0
+LacDesCaches	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0
+LacHolmes	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1;
+
+param Cout_recolte :=
+LacMartin 840000
+LacDesCaches 1561280
+LacHolmes 1863234;
+
+param Cout_transport_pre_rabotage := 0.06; # Coût du transport du bois des forêts aux scieries (par km et par mètre cube)
+
+
+param Cout_transport_rabotage_client := # Coût du transport du bois des raboteries aux clients pour chaque mode de transport (par km et par mètre cube)
+    train	0.06
+    route	0.132;
+
+param Cout_scie := # Coût du traitement du bois dans les scieries (par mètre cube)
+Senneterre              1.00  
+LebelsurQuevillon     1.40;
+
+param Cout_rabotage := # Coût du traitement du bois dans les raboteries (par mètre cube)
+    Senneterre_rabot	    0.80  
+    La_Dore_rabot	        0.95;
+
+param Cap_foret : SPF Fir := # Capacité des forêts (en mètre cube)
+    LacMartin	    4000  	 36000  
+    LacDesCaches	11424  	 64736  
+    LacHolmes	    9720  	 71280;
+
+param Cap_scie : SPF Fir := # Capacité des scieries (en mètre cube)
+    Senneterre	        580000	0
+    LebelsurQuevillon   0	    320000;
+
+param Cap_rabotage : SPF Fir := # Capacité des raboteries (en mètre cube)
+    Senneterre_rabot	500000	0
+    La_Dore_rabot	0	700000;
+
+param EFF_SCIE := # Efficacité des scieries
+    Senneterre          0.61
+    LebelsurQuevillon   0.58;
+
+param EFF_RABOT := # Efficacité des raboteries
+    Senneterre_rabot 0.98
+    La_Dore_rabot    0.97;
