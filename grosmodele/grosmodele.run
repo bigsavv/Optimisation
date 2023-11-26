@@ -1,0 +1,25 @@
+reset;
+
+# Load the model file
+model grosmodele.mod;
+
+# Load the data file
+data grosmodele.dat;
+
+# Solve the problem
+option solver highs;
+solve;
+
+# Display results - you can customize this section based on what results you want to see
+display A;
+display B;
+display C;
+display Y;
+
+
+display Cout_Total;
+
+# You may want to add more display commands or post-processing commands here to analyze your results more thoroughly
+printf {j in JOURS, f in FORETS, e in ESSENCES, s in SCIERIES} "%s\t%s\t%s\t%s\t%.3f\n", j, f, e, s, A[f, s, e, j] > "./resultats_A.csv";
+
+

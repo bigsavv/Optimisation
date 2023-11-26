@@ -1,0 +1,208 @@
+# Fichier de données
+
+set FORETS := LacMartin	Lac_des_caches	Lac_Holmes	Lac_Wilson	Lac_aux_Loutres	Lac_Mesplet	Lac_Madelaine	Lac_Waswanipi	Lac_Cameron	Lacs_Fortier	Lac_Bonnemain	Lac_du_Guesclin	Lac_Dutilly	LacSamuelBedard	Lac_de_la_Loupe	Lac_Singapore	Lac_aux_Rats	Lac_Malfait	Lac_Dentelle	Zec_Varin	Lac_Aline	Lac_Nipissis	Lac_Megiscane	Lac_Turgeon;
+set SCIERIES := Senneterre	LebelsurQuevillon	La_Tuque	Maniwaki	La_Dore	StFelicien	BaieComeau	Chibougamau;
+set RABOTAGES := Senneterre_rabot	La_Dore_rabot	Normandin_rabot	Quebec_rabot	Outardes_rabot;
+set CLIENTS := Goodfellow	Lowes	HH	Rona	Home_Depot;
+set ESSENCES := SPF Fir;
+set JOURS := j01 j02 j03 j04 j05 j06 j07 j08 j09 j10 j11 j12 j13 j14 j15 j16 j17 j18 j19 j20 j21 j22 j23 j24 j25 j26 j27 j28 j29 j30 j31 j32 j33 j34 j35 j36 j37 j38 j39 j40 j41 j42 j43 j44 j45 j46 j47 j48 j49 j50 j51 j52 j53 j54 j55 j56 j57 j58 j59 j60 j61 j62 j63 j64 j65 j66 j67 j68 j69 j70 j71 j72 j73 j74 j75 j76 j77 j78 j79 j80 j81 j82 j83;
+set MODES_TRANSPORT := train route;
+
+# Paramètres
+param Distance_foret_scie : Senneterre	LebelsurQuevillon	La_Tuque	Maniwaki	La_Dore	StFelicien	BaieComeau	Chibougamau :=
+    LacMartin	    42.3	130	762	333	569	590	1029	383
+    Lac_des_caches	60	92.8	730	351	536	557	996	350
+    Lac_Holmes	    112	27.6	664	403	471	492	931	285
+    Lac_Wilson	    128	43.4	657	419	464	484	923	277
+    Lac_aux_Loutres	188	104	694	479	501	521	961	314
+    Lac_Mesplet	    195	110	700	486	507	528	967	321
+    Lac_Madelaine	144	59.4	614	435	421	441	881	234
+    Lac_Waswanipi	186	102	555	478	362	382	821	175
+    Lac_Cameron	    119	34.7	604	410	411	431	871	224
+    Lacs_Fortier	209	124	644	500	451	472	911	265
+    Lac_Bonnemain	216	132	524	507	331	351	791	144
+    Lac_du_Guesclin	286	201	491	577	298	318	758	111
+    Lac_Dutilly	    422	337	485	713	292	312	752	80.8
+    LacSamuelBedard	416	331	494	707	301	321	760	89.7
+    Lac_de_la_Loupe	613	529	246	426	213	234	673	296
+    Lac_Singapore	231	319	278	259	361	381	806	571
+    Lac_aux_Rats	718	633	64.4	614	190	169	529	401
+    Lac_Malfait	    585	500	236	785	56.8	63.9	502	268
+    Lac_Dentelle	810	725	417	988	282	270	429	493
+    Zec_Varin	    997	913	542	952	469	449	28	680
+    Lac_Aline	    932	848	477	887	404	384	148	615
+    Lac_Nipissis	1240	1155	785	1194	712	691	256	923
+    Lac_Megiscane	112	199	832	403	639	659	1099	452
+    Lac_Turgeon	    184	240	873	456	679	700	1139	493;
+
+param Distance_scie_rabotage : Senneterre_rabot	La_Dore_rabot	Normandin_rabot	Quebec_rabot	Outardes_rabot :=
+    Senneterre	0	528	548	767	988
+    LebelsurQuevillon	88.2	443	464	746	903
+    La_Tuque	721	193	199	240	533
+    Maniwaki	291	744	751	529	943
+    La_Dore	528	0	20.3	302	460
+    StFelicien	548	20.4	27.1	282	439
+    BaieComeau	987	459	465	414	0
+    Chibougamau	341	211	231	513	671;
+
+param Distance_rabotage_client : Goodfellow	Lowes	HH	Rona	Home_Depot :=
+    Senneterre_rabot	542	1132	3337	536	954
+    La_Dore_rabot	    529	1376	3615	484	582
+    Normandin_rabot	    535	1382	3621	490	588
+    Quebec_rabot	    263	1164	3403	261	284
+    Outardes_rabot	    679	158	    3784	677	700;
+
+# set URGENT_CLIENTS within CLIENTS := Goodfellow; # Liste des clients urgents
+
+#param Demande_basse_urgente : Goodfellow :=
+#   SPF	100000	0
+#  Fir	    0	0;
+
+param Demande_basse : SPF	Fir :=
+    Goodfellow	150000	0
+    Lowes	    120000	0
+    HH	        0	20000
+    Rona	    10000	0
+    Home_Depot	110000	0;
+
+param Demande_haute : SPF	Fir :=
+    Goodfellow	172500	0
+    Lowes	    287500	0
+    HH	        0	287500
+    Rona	    172500	0
+    Home_Depot	172500	0;
+
+param Droit_de_coupe : j01 j02 j03 j04 j05 j06 j07 j08 j09 j10 j11 j12 j13 j14 j15 j16 j17 j18 j19 j20 j21 j22 j23 j24 j25 j26 j27 j28 j29 j30 j31 j32 j33 j34 j35 j36 j37 j38 j39 j40 j41 j42 j43 j44 j45 j46 j47 j48 j49 j50 j51 j52 j53 j54 j55 j56 j57 j58 j59 j60 j61 j62 j63 j64 j65 j66 j67 j68 j69 j70 j71 j72 j73 j74 j75 j76 j77 j78 j79 j80 j81 j82 j83 :=
+    LacMartin	        0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_des_caches	    0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Holmes	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Wilson	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_aux_Loutres	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Mesplet	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Madelaine	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Waswanipi	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Cameron	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lacs_Fortier	    0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Bonnemain	    0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_du_Guesclin	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Dutilly	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0
+    LacSamuelBedard	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_de_la_Loupe	    0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Singapore	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_aux_Rats	    0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Malfait	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Dentelle	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1
+    Zec_Varin	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0
+    Lac_Aline	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0
+    Lac_Nipissis	    1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0
+    Lac_Megiscane	    0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0	0	0
+    Lac_Turgeon	        0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	0	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	1	0	0;
+
+param Cout_recolte :=
+    LacMartin	840000
+    Lac_des_caches	1561280
+    Lac_Holmes	1862955
+    Lac_Wilson	2124200
+    Lac_aux_Loutres	857925
+    Lac_Mesplet	601980
+    Lac_Madelaine	1248104
+    Lac_Waswanipi	1560000
+    Lac_Cameron	955500
+    Lacs_Fortier	2480000
+    Lac_Bonnemain	1003520
+    Lac_du_Guesclin	1144920
+    Lac_Dutilly	2029680
+    LacSamuelBedard	1460445
+    Lac_de_la_Loupe	634725
+    Lac_Singapore	1003200
+    Lac_aux_Rats	1020800
+    Lac_Malfait	997920
+    Lac_Dentelle	1554380
+    Zec_Varin	513000
+    Lac_Aline	1803476
+    Lac_Nipissis	504000
+    Lac_Megiscane	3105900
+    Lac_Turgeon	1419000;
+
+param Cout_transport_pre_rabotage := 0.06; # Coût du transport du bois des forêts aux scieries (par km et par mètre cube)
+
+param Cout_transport_rabotage_client := # Coût du transport du bois des raboteries aux clients pour chaque mode de transport (par km et par mètre cube)
+    train	0.06
+    route	0.132;
+
+param Cout_scie := # Coût du traitement du bois dans les scieries (par mètre cube)
+    Senneterre	            1.00  
+    LebelsurQuevillon	    1.40  
+    La_Tuque	            1.10  
+    Maniwaki	            1.05  
+    La_Dore	                1.20  
+    StFelicien	            1.30  
+    BaieComeau	            1.15  
+    Chibougamau	            1.25;
+
+param Cout_rabotage := # Coût du traitement du bois dans les raboteries (par mètre cube)
+    Senneterre_rabot    0.80  
+    La_Dore_rabot	    0.95  
+    Normandin_rabot	    0.75  
+    Quebec_rabot	    0.85  
+    Outardes_rabot	    0.95;
+
+param Cap_foret : SPF Fir := # Capacité des forêts (en mètre cube)
+    LacMartin	    36000	4000
+    Lac_des_caches	64736	11424
+    Lac_Holmes	    71280	9720
+    Lac_Wilson	    85956	12844
+    Lac_aux_Loutres	38502	3348
+    Lac_Mesplet	    13728	1872
+    Lac_Madelaine	45600	2400
+    Lac_Waswanipi	59904	2496
+    Lac_Cameron	    35880	3120
+    Lacs_Fortier	95232	3968
+    Lac_Bonnemain	31584	2016
+    Lac_du_Guesclin	46771.2	1948.8
+    Lac_Dutilly	    63360	8640
+    LacSamuelBedard	48921.6	4838.4
+    Lac_de_la_Loupe	10416	22134
+    Lac_Singapore	4752	48048
+    Lac_aux_Rats	23200	23200
+    Lac_Malfait	    19008	28512
+    Lac_Dentelle	30375	37125
+    Zec_Varin	    16200	10800
+    Lac_Aline	    56550	30450
+    Lac_Nipissis	10080	15120
+    Lac_Megiscane	139026	8874
+    Lac_Turgeon	    60720	5280;
+
+param Cap_scie : SPF Fir := # Capacité des scieries (en mètre cube)
+    Senneterre	        1432	0
+    LebelsurQuevillon	752	0
+    La_Tuque	        0	1328
+    Maniwaki	        1394	0
+    La_Dore	            1596	0
+    StFelicien	        1418	0
+    BaieComeau	        0	1204
+    Chibougamau	        1238	0;
+
+param Cap_rabotage : SPF Fir := # Capacité des raboteries (en mètre cube)
+    Senneterre_rabot	1429	0
+    La_Dore_rabot	    2000	0
+    Normandin_rabot	    1714	0
+    Quebec_rabot	    1357	0
+    Outardes_rabot	    0	1214;
+
+param EFF_SCIE := # Efficacité des scieries
+    Senneterre	0.61
+    LebelsurQuevillon	0.58
+    La_Tuque	0.64
+    Maniwaki	0.62
+    La_Dore	0.67
+    StFelicien	0.66
+    BaieComeau	0.59
+    Chibougamau	0.67;
+
+param EFF_RABOT := # Efficacité des raboteries
+    Senneterre_rabot	0.98
+    La_Dore_rabot	    0.97
+    Normandin_rabot	    0.975
+    Quebec_rabot	    0.99
+    Outardes_rabot	    0.96;
